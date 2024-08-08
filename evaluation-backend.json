@@ -1,0 +1,13 @@
+{
+    "displayName": "evaluation-backend",
+    "appName": "evaluation-backend",
+    "description": "Backend of evaluation",
+    "lastModified": "2024-08-08T17:56:02.362Z",
+    "imgSourcePath": "",
+    "version": "1.0.0",
+    "appType": "apiOnly",
+    "templateName": "blank",
+    "createDate": "2024-08-08T17:56:00.989Z",
+    "analyticsId": "1c551eec-6867-0584-9ddc-23616ed800c0",
+    "createdStudioVersion": "9.2.3"
+}

@@ -1,0 +1,219 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_1jiOQTYK8qE6nGR6",
+        "type": "tab",
+        "createdDate": "2024-08-08T18:00:51.054Z",
+        "label": "files",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "files",
+        "relativeParentPath": ""
+    },
+    {
+        "id": "sd_3zX0w5XoRUSQXs9J",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_1jiOQTYK8qE6nGR6",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "Upload",
+        "path": "/upload-file",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": true,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "uploadFileOptions": {
+            "type": "path",
+            "fileOptions": [
+                {
+                    "name": "file",
+                    "maxCount": 1
+                }
+            ],
+            "path": ""
+        },
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "fileoptions": [
+                {
+                    "key": "file",
+                    "value": "1",
+                    "rowId": "sd_7aSBHSrWGdkqHDID",
+                    "valid": true
+                }
+            ],
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 100,
+        "y": 120,
+        "wires": [
+            [
+                "sd_NUG8COGn8DoLyBL9"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "files",
+        "functionName": "sd_3zX0w5XoRUSQXs9J"
+    },
+    {
+        "id": "sd_NUG8COGn8DoLyBL9",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_1jiOQTYK8qE6nGR6",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.file = bh.input.files.file[0];\nconsole.log(bh.file)",
+        "functionName": "sd_NUG8COGn8DoLyBL9",
+        "category": "Function",
+        "x": 205,
+        "y": 120,
+        "wires": [
+            [
+                "sd_NrSduPdrULbo5weA"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "files",
+        "generated": true
+    },
+    {
+        "id": "sd_NrSduPdrULbo5weA",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_1jiOQTYK8qE6nGR6",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_DSW6ELhXvUu7PZkh",
+        "collection": "\"files\"",
+        "options": "bh.option",
+        "resultMapping": "bh.result",
+        "operation": "uploadFile",
+        "argumentArray": [
+            "filePath",
+            "fileName",
+            "options"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "bh.file.path",
+        "fileName": "bh.file.filename",
+        "pipeline": "",
+        "functionName": "sd_NrSduPdrULbo5weA",
+        "category": "Storage",
+        "x": 305,
+        "y": 120,
+        "wires": [
+            [
+                "sd_zMCRk5vB41FGcqCK"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "str",
+                "value": "files",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "option",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "filePath": {
+                "type": "bh",
+                "value": "file.path",
+                "constant": false
+            },
+            "fileName": {
+                "type": "bh",
+                "value": "file.filename",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "files",
+        "generated": true
+    },
+    {
+        "id": "sd_zMCRk5vB41FGcqCK",
+        "type": "ServerLog",
+        "z": "SSD_SERVICE_ID_sd_1jiOQTYK8qE6nGR6",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 0,
+        "logObject": "bh.result",
+        "logLevel": "info",
+        "functionName": "sd_zMCRk5vB41FGcqCK",
+        "category": "General",
+        "x": 385,
+        "y": 120,
+        "wires": [],
+        "__ssdTypeInputs__": {
+            "logObject": {
+                "type": "bh",
+                "value": "result",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "files",
+        "generated": true
+    }
+]
